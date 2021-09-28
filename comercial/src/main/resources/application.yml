@@ -4,14 +4,23 @@ spring:
   profiles:
     active: '@appProfile@'
 
-  datasource:
-    username: postgres
-    password: 123456
-    driver-class-name: org.postgresql.Driver
+#  datasource:
+#    username: postgres
+#    password: 123456
+#    driver-class-name: org.postgresql.Driver
+#
+#  jpa:
+#    hibernate.ddl-auto: create
+#    database-plataform: org.hibernate.dialect.PostgreSQL9Dialect
 
+  datasource:
+    url: jdbc:h2:mem:dbevertec
+    driverClassName: org.h2.Driver
+    username: evertec
+    password: 123456
   jpa:
-    hibernate.ddl-auto: create
-    database-plataform: org.hibernate.dialect.PostgreSQL9Dialect
+    database-platform: org.hibernate.dialect.H2Dialect
+
 
 ---
 spring:
@@ -19,7 +28,8 @@ spring:
     activate:
       on-profile: prod
   datasource:
-    url: jdbc:postgresql://10.2.202.201:5432/dbevertec
+    url: jdbc:h2:mem:dbevertec
+#    url: jdbc:postgresql://10.2.202.201:5432/dbevertec
   jpa:
     show-sql: false
 
@@ -29,6 +39,7 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: jdbc:postgresql://localhost:5432/dbevertec
+    url: jdbc:h2:mem:dbevertec
+#    url: jdbc:postgresql://localhost:5432/dbevertec
   jpa:
     show-sql: true

@@ -1,13 +1,22 @@
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/dbevertec
+#    username: postgres
+#    password: 123456
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+#    hibernate.ddl-auto: create
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    show-sql: true
+
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/dbevertec
-    username: postgres
+    url: jdbc:h2:mem:dbevertec
+    driverClassName: org.h2.Driver
+    username: evertec
     password: 123456
-    driver-class-name: org.postgresql.Driver
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
-    hibernate.ddl-auto: create
-    properties:
-      hibernate:
-        format_sql: true
-    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect

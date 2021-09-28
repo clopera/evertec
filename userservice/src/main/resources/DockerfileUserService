@@ -1,0 +1,4 @@
+FROM openjdk:14
+EXPOSE 8090
+ADD ./userservice-0.0.1-SNAPSHOT.jar ms-userservice.jar
+ENTRYPOINT ["java","-jar","ms-userservice.jar"]

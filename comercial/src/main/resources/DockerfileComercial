@@ -1,0 +1,4 @@
+FROM openjdk:14
+EXPOSE 8282
+ADD ./evertec-0.0.1-SNAPSHOT.jar ms-comercial.jar
+ENTRYPOINT ["java","-jar","ms-comercial.jar"]

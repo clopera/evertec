@@ -1,13 +1,34 @@
 version: "3.9"
 services:
-  postgresqldb:
-    container_name: postgres12database
+#  postgresqldb:
+#    container_name: postgres12database
+#    ports:
+#      - "5432:5432"
+#    environment:
+#      - "POSTGRES_PASSWORD=123456"
+#      - "POSTGRES_DB=dbevertec"
+#    image: postgres:12-alpine
+#    networks:
+#      - netevertec
+
+  mscomercial:
+      container_name: ms-comercial
+      ports:
+        - "8282:8282"
+      restart: always
+      build:
+        context: .
+        dockerfile: DockerfileComercial
+      networks:
+        - netevertec
+  msuserservice:
+    container_name: ms-userservice
     ports:
-      - "5432:5432"
-    environment:
-      - "POSTGRES_PASSWORD=123456"
-      - "POSTGRES_DB=dbevertec"
-    image: postgres:12-alpine
+      - "8090:8090"
+    restart: always
+    build:
+      context: .
+      dockerfile: DockerfileUserService
     networks:
       - netevertec
 volumes:

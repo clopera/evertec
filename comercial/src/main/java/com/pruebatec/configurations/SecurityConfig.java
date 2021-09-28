@@ -21,7 +21,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/cliente/**","/api/deuda/**").hasAnyAuthority("ROLE_ADMIN","ROLE_USER");
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/cliente/**","/api/deuda/**").hasAnyAuthority("ROLE_ADMIN","ROLE_COMERCIAL");
+        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/cliente/**","/api/deuda/**").hasAnyAuthority("ROLE_ADMIN","ROLE_COMERCIAL");
         http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/cliente/**","/api/deuda/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(
+                "/v2/api-docs",
+                "/configuration/ui",
+                "/swagger-resources/**",
+                "/configuration/security",
+                "/swagger-ui.html",
+                "/webjars/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
