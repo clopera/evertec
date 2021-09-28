@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  postgresqldb:
+    container_name: postgres12database
+    ports:
+      - "5432:5432"
+    environment:
+      - "POSTGRES_PASSWORD=123456"
+      - "POSTGRES_DB=dbevertec"
+    image: postgres:12-alpine
+    networks:
+      - netevertec
+volumes:
+  portainer_data:
+networks:
+  netevertec:

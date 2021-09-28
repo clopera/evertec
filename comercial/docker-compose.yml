@@ -1,0 +1,29 @@
+version: "3.9"
+#------------------------------------------------------ |RED DE TRABAJO
+networks:
+  evertec:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.0.0/16
+    name: evertec  
+
+services:
+
+#------------------------------------------------------ |BASE DE DATOS
+  postgres-server:
+      container_name: postgres-server
+      image: postgres:12-alpine
+      ports:
+        - "5432:5432"
+      restart: unless-stopped
+      environment:
+        TZ: 'America/Bogota'
+        PGTZ: 'America/Bogota'
+        POSTGRES_DB: dbevertec
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: dbevertec
+      volumes:
+        - ./volume/db/postgres:/var/lib/postgresql/data
+      networks:
+        - evertec

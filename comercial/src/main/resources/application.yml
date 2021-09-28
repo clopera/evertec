@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: ms-financiero
+  profiles:
+    active: '@appProfile@'
+
+  datasource:
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate.ddl-auto: create
+    database-plataform: org.hibernate.dialect.PostgreSQL9Dialect
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:postgresql://10.2.202.201:5432/dbevertec
+  jpa:
+    show-sql: false
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dbevertec
+  jpa:
+    show-sql: true
